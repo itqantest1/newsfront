@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الرئيسية</title>
+    <style>
+        .pagetitle {
+            text-align: center;
+            color: rgb(42, 48, 54);
+        }
+
+        .container {
+            width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsitem {
+            border: 2px dashed rgb(94, 94, 94);
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+        .newsitem h2 {
+            margin-top: 0;
+        }
+
+        .newsitem h2 a {
+            text-decoration: none;
+            color: #32A2EF;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 class="pagetitle">أخبار التكنولوجيا</h1>
+
+    <div class="container">
+
+        <div class="newsitem">
+            <h2>
+                <a href="#">XX</a>
+            </h2> 
+            <span>YYY</span>
+            <p>
+                ZZZ
+            </p>
+        </div>
+        
+
+    </div>
+
+    <script>
+
+    </script>
+
+    <script>
+        let jsonURL = "http://localhost:3000/newscontent/" + document.URL.split('news/')[1]
+        fetch(jsonURL)
+        .then(function (data) { return data.json() })
+        .then(function (res) {
+            console.log(res);
+            document.querySelector('.newsitem h2 a').innerText = res[0].title
+            document.querySelector('.newsitem span').innerText = res[0].publish_datetime
+            document.querySelector('.newsitem p').innerText = res[0].content
+        })
+    </script>
+</body>
+</html>
